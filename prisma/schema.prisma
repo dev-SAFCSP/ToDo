@@ -11,17 +11,24 @@ datasource db {
 }
 
 model User{
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   name String
-  email String 
+  email String @unique
   password String
+  role Role @default(User)
   tasks Task[]
 }
 
 model Task{
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   title String 
   isCompleted Boolean @default(false)
   user User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
+}
+
+
+enum Role{
+  User
+  Admin
 }
