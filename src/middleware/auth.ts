@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import * as jwt from 'jsonwebtoken';
-import { string } from "zod";
 
 interface User{
     id: string,
