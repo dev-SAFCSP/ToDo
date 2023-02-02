@@ -25,6 +25,8 @@ model Task{
   isCompleted Boolean @default(false)
   user User @relation(fields: [userId], references: [id])
   userId String
+
+  @@index([userId])
 }
 
 
