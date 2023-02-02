@@ -1,15 +1,18 @@
-import express,{Application} from 'express';
+import express,{Application,Request,Response} from 'express';
 import userRouter from './routes/user.route';
 import taskRouter from './routes/task.route';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 
 const app:Application = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
+app.get('/',(req:Request,res:Response)=>{
+    res.send('test');
+});
 app.use('/users',userRouter);
 app.use('/tasks',taskRouter);
 
